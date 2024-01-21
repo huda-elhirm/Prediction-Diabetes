@@ -1,0 +1,147 @@
+{% load static %}
+{% csrf_token %}
+<html>
+
+<head>
+<title>{% block title %}Diabete_Prediction.AI{% endblock %}</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background-image: url("https://traitement-obesite.be/wp-content/uploads/2019/07/iStock-1159486000.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  margin: 100px auto;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.title h1 {
+  color: #3c3b59;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-item {
+  margin-bottom: 20px;
+}
+
+.form-item label {
+  display: block;
+  margin-bottom: 5px;
+  color: #535274;
+}
+
+.form-item input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #ebeef1;
+  border-radius: 5px;
+  outline: none;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.btn {
+  background: #1ab7e6;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn i {
+  margin-left: 5px;
+}
+
+
+</style>
+
+<script>
+function validateform() {
+  var Pregnancies = document.getElementById("Pregnancies").value;
+  var Glucose = document.getElementById("Glucose").value;
+  var BloodPressure = document.getElementById("BloodPressure").value;
+  var SkinThickness = document.getElementById("SkinThickness").value;
+  var Insulin = document.getElementById("Insulin").value;
+  var BMI = document.getElementById("BMI").value;
+  var DiabetesPedigreeFunction = document.getElementById("DiabetesPedigreeFunction").value;
+  var Age = document.getElementById("Age").value;
+
+  if (Pregnancies == "" || Glucose == "" || BloodPressure == "" || SkinThickness == "" || Insulin == "" ||
+    BMI == "" || DiabetesPedigreeFunction == "" || Age == "") {
+    alert("Please fill in all fields");
+    return false;
+  }
+}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+  <div class="title">
+    <h1>Prédiction du diabète</h1>
+  </div>
+  <form id="form1" name="form1" method="post" action="/diabetes_pre/" onsubmit="return validateform()">
+    {% csrf_token %}
+    <div class="form-item">
+      <label for="Pregnancies">Grossesses</label>
+      <input type="text" id="Pregnancies" name="Pregnancies" placeholder="Grossesses">
+    </div>
+    <div class="form-item">
+      <label for="Glucose">Glucose</label>
+      <input type="text" id="Glucose" name="Glucose" placeholder="Glucose">
+    </div>
+    <div class="form-item">
+      <label for="BloodPressure">Tension artérielle</label>
+      <input type="text" id="BloodPressure" name="BloodPressure" placeholder="Tension artérielle">
+    </div>
+    <div class="form-item">
+      <label for="SkinThickness">Epaisseur de la peau</label>
+      <input type="text" id="SkinThickness" name="SkinThickness" placeholder="Epaisseur de la peau">
+    </div>
+    <div class="form-item">
+      <label for="Insulin">Insuline</label>
+      <input type="text" id="Insulin" name="Insulin" placeholder="Insuline">
+    </div>
+    <div class="form-item">
+      <label for="BMI">IMC</label>
+      <input type="text" id="BMI" name="BMI" placeholder="IMC">
+    </div>
+    <div class="form-item">
+      <label for="DiabetesPedigreeFunction">Fonction de pedigree du diabète</label>
+      <input type="text" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" placeholder="Fonction de pedigree du diabète">
+    </div>
+    <div class="form-item">
+      <label for="Age">Age</label>
+      <input type="text" id="Age" name="Age" placeholder="Age">
+    </div>
+    <div class="btn-container">
+      <button type="submit" form="form1" value="Submit" class="btn">Submit<i class="fas fa-arrow-right"></i></button>
+      <button type="reset" form="form1" value="reset" class="btn">Clear<i class="fas fa-arrow-right"></i></button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

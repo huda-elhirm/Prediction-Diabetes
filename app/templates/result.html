@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Résultat de la prédiction du diabète{% endblock %}</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        body {
+            background-image: url("https://traitement-obesite.be/wp-content/uploads/2019/07/iStock-1159486000.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            margin: 100px auto;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .title h1 {
+            color: #3c3b59;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-item {
+            margin-bottom: 20px;
+        }
+
+        .form-item label {
+            display: block;
+            margin-bottom: 5px;
+            color: #535274;
+        }
+
+        .form-item input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #ebeef1;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background: #1ab7e6;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn i {
+            margin-left: 5px;
+        }
+        
+        .result {
+            font-size: 18px;
+            text-align: center;
+            color: #3c3b59;
+            margin-bottom: 30px;
+        }
+        
+        .emoji-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .emoji {
+            font-size: 30px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">
+    <h1>Résultat de la prédiction du diabète</h1>
+  </div>
+  <p class="result">{{ result }}</p>
+  <div class="emoji-container">
+    {% if result == "Vous êtes diabétique, veuillez consulter votre médecin" %}
+      <i class="far fa-dizzy emoji"></i> <!-- Emoji pour le cas diabétique -->
+    {% else %}
+      <i class="far fa-smile emoji"></i> <!-- Emoji pour le cas non diabétique -->
+    {% endif %}
+  </div>
+  <div class="btn-container">
+    <a href="/"><button class="btn">Retour à l'accueil<i class="fas fa-arrow-right"></i></button></a>
+  </div>
+</div>
+
+</body>
+</html>

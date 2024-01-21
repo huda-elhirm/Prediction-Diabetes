@@ -1,0 +1,4 @@
+
+Pour exécuter :
+cd app 
+python manage.py runserver 
